@@ -1,4 +1,4 @@
-package pojo.model;
+package pojo.model.employeemanagement;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

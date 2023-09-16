@@ -11,10 +11,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pojo.model.EmployeeDto;
-import utils.RandomUtils;
 
 import java.util.HashMap;
 import java.util.List;
