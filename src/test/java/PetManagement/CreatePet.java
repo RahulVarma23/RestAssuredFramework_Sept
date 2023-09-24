@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import pojo.model.petmanagement.PetDto;
 import pojo.response.petmanagement.PetResponseDto;
 
-public class CreatePet extends BaseRequest {
+public class CreatePet extends BaseRequest{
 
     @Test
     public void createNewPet() {

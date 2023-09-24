@@ -14,9 +14,9 @@ public class PropOperation {
     static String filePath = "./src/main/resources/"+env+".properties";
 
     public static String getEnvProperty(String key) {
-        File file = new File(filePath);
+        //File file = new File(filePath);
         try {
-             fileInputStream = new FileInputStream(file);
+             fileInputStream = new FileInputStream(filePath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

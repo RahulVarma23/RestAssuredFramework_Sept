@@ -15,4 +15,10 @@ public class RandomUtils {
     public static String getRandomAlphaNumericValue(int charCount){
         return RandomStringUtils.random(charCount, true, true);
     }
+
+    public static String getRandomLongValue(int charCount){
+        return RandomStringUtils.random(charCount, false, true);
+    }
+
+
 }

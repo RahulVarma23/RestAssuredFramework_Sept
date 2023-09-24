@@ -11,7 +11,7 @@ public abstract class BaseRequest {
         return given().spec(requestSpecification).log().all().when().get().then().log().all().extract().response();
     }
 
-    protected Response sendPostRequest(RequestSpecification requestSpecification, Object requestBody ) {
+    protected static Response sendPostRequest(RequestSpecification requestSpecification, Object requestBody ) {
         return given().spec(requestSpecification).body(requestBody).log().all().when().post().then().log().all().extract().response();
     }
 
