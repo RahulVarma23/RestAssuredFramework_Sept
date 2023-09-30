@@ -2,9 +2,7 @@ package employeemanagement;
 
 import common.BaseRequest;
 import common.ResponseValidationStep;
-import configs.RequestPath;
 import configs.RequestSpecs;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -20,6 +18,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static configs.RequestPath.EMPLOYEE;
+import static configs.RequestPath.EMPLOYEES;
 import static io.restassured.RestAssured.given;
 
 
@@ -33,7 +32,7 @@ public class GetEmployee extends BaseRequest{
     @Test
     public void getAllEmployees() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
-                .basePath(EMPLOYEE);
+                .basePath(EMPLOYEES);
 
         Response response = sendGetRequest(requestSpecification);
 
@@ -88,7 +87,7 @@ public class GetEmployee extends BaseRequest{
     @Test
     public void shouldValidateEmployeeNames() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
-                .basePath(EMPLOYEE);
+                .basePath(EMPLOYEES);
 
         Response response = sendGetRequest(requestSpecification);
 
@@ -119,7 +118,7 @@ public class GetEmployee extends BaseRequest{
     public void shouldGetEmployeeById() {
         String id = "1";
         requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
-                .basePath(EMPLOYEE+"/"+id);
+                .basePath(EMPLOYEE +"/"+id);
                  Response response = given().spec(requestSpecification).log().all().when().get().then().log().all().extract().response();
         Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
 

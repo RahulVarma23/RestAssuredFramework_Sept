@@ -1,4 +1,4 @@
-package PetManagement;
+package petmanagement;
 
 import common.BaseRequest;
 import common.ResponseValidationStep;
