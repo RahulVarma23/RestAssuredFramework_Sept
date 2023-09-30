@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import static configs.RequestPath.EMPLOYEE;
 import static io.restassured.RestAssured.given;
 
 
@@ -26,14 +27,13 @@ public class GetEmployee extends BaseRequest{
 
     //request specification
 
-    private static final String BASE_URI = "https://dummy.restapiexample.com/api/v1";
     RequestSpecification requestSpecification;
 
 
     @Test
     public void getAllEmployees() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
-                .basePath(RequestPath.EMPLOYEE);
+                .basePath(EMPLOYEE);
 
         Response response = sendGetRequest(requestSpecification);
 
@@ -88,7 +88,7 @@ public class GetEmployee extends BaseRequest{
     @Test
     public void shouldValidateEmployeeNames() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
-                .basePath(RequestPath.EMPLOYEE);
+                .basePath(EMPLOYEE);
 
         Response response = sendGetRequest(requestSpecification);
 
@@ -118,11 +118,9 @@ public class GetEmployee extends BaseRequest{
     @Test
     public void shouldGetEmployeeById() {
         String id = "1";
-        requestSpecification = new RequestSpecBuilder()
-                .setBaseUri(BASE_URI)
-                .setBasePath("/employee/"+id)
-                .build();
-        Response response = given().spec(requestSpecification).log().all().when().get().then().log().all().extract().response();
+        requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
+                .basePath(EMPLOYEE+"/"+id);
+                 Response response = given().spec(requestSpecification).log().all().when().get().then().log().all().extract().response();
         Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
 
         JsonPath jsonPath = response.jsonPath();
