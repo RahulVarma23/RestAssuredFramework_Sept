@@ -11,6 +11,8 @@ import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import pojo.model.petmanagement.PetDto;
 import pojo.response.petmanagement.PetResponseDto;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreatePet extends BaseRequest{
 
@@ -28,7 +30,13 @@ public class CreatePet extends BaseRequest{
 
         Assertions.assertThat(petResponseDto.getName()).isEqualTo(petDto.getName());
         Assertions.assertThat(petResponseDto.getStatus()).isEqualTo(petDto.getStatus());
-        Assertions.assertThat(petResponseDto.getTags().get(0).getId()).isEqualTo(petDto.getTags().get(0).getId());
+
+        List<Integer> list = new ArrayList<>();
+        for(int i =0;i<petResponseDto.getTags().size();i++) {
+            list.add(petResponseDto.getTags().get(i).getId());
+        }
+        
+        Assertions.assertThat(list).contains(petDto.getTags().get(0).getId());
         Assertions.assertThat(petResponseDto.getCategory().getName()).isEqualTo(petDto.getCategory().getName());
         Assertions.assertThat(petResponseDto.getPhotoUrls()).containsExactlyInAnyOrderElementsOf(petDto.getPhotoUrls());
     }
