@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CreatePet extends BaseRequest{
 
-    @Test
+    @Test(groups = "regression")
     public void createNewPet() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonPetRequestSpec()
                 .basePath(RequestPath.PET);
@@ -39,5 +39,15 @@ public class CreatePet extends BaseRequest{
         Assertions.assertThat(list).contains(petDto.getTags().get(0).getId());
         Assertions.assertThat(petResponseDto.getCategory().getName()).isEqualTo(petDto.getCategory().getName());
         Assertions.assertThat(petResponseDto.getPhotoUrls()).containsExactlyInAnyOrderElementsOf(petDto.getPhotoUrls());
+    }
+
+    @Test
+    public void m1() {
+        System.out.println("m1");
+    }
+
+    @Test
+    public void m2() {
+        System.out.println("m2");
     }
 }

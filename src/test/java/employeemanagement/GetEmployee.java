@@ -29,7 +29,7 @@ public class GetEmployee extends BaseRequest{
     RequestSpecification requestSpecification;
 
 
-    @Test
+    @Test(groups ="regression")
     public void getAllEmployees() {
         RequestSpecification requestSpecification = RequestSpecs.buildCommonEmployeeRequestSpec()
                 .basePath(EMPLOYEES);
